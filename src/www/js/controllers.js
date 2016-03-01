@@ -19,7 +19,8 @@ angular.module('starter.controllers', [])
         name: $scope.form.name
       }
     }).then(function successCallback(response) {
-      BeerData.data = response.data;                                      // save the response data in the factory
+      BeerData.data = response.data;
+      console.log(BeerData.data);                                     // save the response data in the factory
       $state.go('app.beers');                                             // go to the beer results state
     });
   }
@@ -28,14 +29,8 @@ angular.module('starter.controllers', [])
 .controller('BeersCtrl', function($scope, BeerData) {
   console.log(BeerData.data);                                             // test to make sure that the data got passed through
 
-  $scope.playlists = [                                                    // this should be updated to contain the beer data
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+
+  $scope.playlists = BeerData.data.data;
 })
 
 
